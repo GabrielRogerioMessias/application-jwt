@@ -52,12 +52,14 @@ public class Product {
 		this.name = name;
 	}
 
-	public Double getValue() {
+	
+
+	public Double getValueProduct() {
 		return valueProduct;
 	}
 
-	public void setValue(Double value) {
-		this.valueProduct = value;
+	public void setValueProduct(Double valueProduct) {
+		this.valueProduct = valueProduct;
 	}
 
 	public Integer getQuantity() {

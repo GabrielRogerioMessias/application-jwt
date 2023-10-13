@@ -3,6 +3,7 @@ package com.messias.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.messias.domain.Category;
@@ -10,6 +11,8 @@ import com.messias.repositories.CategoryRepository;
 
 @Service
 public class CategoryService {
+
+	@Autowired
 	CategoryRepository cRepository;
 
 	public void delete(Integer idCategory) {

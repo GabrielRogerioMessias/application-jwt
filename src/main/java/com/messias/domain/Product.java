@@ -1,5 +1,6 @@
 package com.messias.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
@@ -12,7 +13,8 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_product")
-public class Product {
+public class Product implements Serializable {
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -28,12 +30,13 @@ public class Product {
 		super();
 	}
 
-	public Product(Integer id, String name, Double valueProduct, Integer quantity) {
+	public Product(Integer id, String name, Double valueProduct, Integer quantity, Category category) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.valueProduct = valueProduct;
 		this.quantity = quantity;
+		this.category = category;
 	}
 
 	public Integer getId() {
@@ -51,8 +54,6 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	
 
 	public Double getValueProduct() {
 		return valueProduct;

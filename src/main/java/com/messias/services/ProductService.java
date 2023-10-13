@@ -45,10 +45,19 @@ public class ProductService {
 		oldProd.setName(newProd.getName());
 		oldProd.setQuantity(newProd.getQuantity());
 		oldProd.setValueProduct(newProd.getValueProduct());
+		oldProd.setCategory(newProd.getCategory());
 	}
 
 	public Product update(Integer idOldProduct, Product newProduct) {
 		Product oldProduct = pRepository.findById(idOldProduct).get();
+		Integer idCategory = newProduct.getCategory().getId();
+		Category category = categoryRepository.findById(idCategory).get();
+		List<Product> listProductsInCategory = category.getProducts();
+		if (listProductsInCategory.contains(oldProduct)) {
+			listProductsInCategory.remove(oldProduct);
+			listProductsInCategory.add(newProduct);
+			categoryRepository.save(category);
+		}
 		this.updateData(oldProduct, newProduct);
 		return pRepository.save(oldProduct);
 	}
